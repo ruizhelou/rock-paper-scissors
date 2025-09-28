@@ -4,84 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="rps-js.js" defer></script>
 </head>
 <body>
-    <script>
-        let humanScore = 0
-        let computerScore = 0
-
-        function getComputerChoice() {
-            let choice = Math.random();
-            if(choice < 1/3) {
-                return "rock"
-            } else if(choice < 2/3) {
-                return "paper"
-            } else {
-                return "scissors"
-            }
-        }
-
-        function getHumanChoice() {
-            return prompt("Rock, paper, or scissors?");
-        }
-
-        function playRound(humanChoice, computerChoice) {
-            humanChoice = humanChoice.toLowerCase()
-            if(humanChoice == 'rock') {
-                if(computerChoice == 'rock') {
-                    console.log('Draw! You: rock, computer: rock')
-                } else if(computerChoice == 'paper') {
-                    console.log('Computer wins! You: rock, computer: paper')
-                    computerScore++
-                } else {
-                    console.log('You win! You: rock, computer: scissors')
-                    humanScore++
-                }
-            } else if(humanChoice == 'paper') {
-                if(computerChoice == 'rock') {
-                    console.log('You win! You: paper, computer: rock')
-                    humanScore++
-                } else if(computerChoice == 'paper') {
-                    console.log('Draw! You: paper, computer: paper')
-                } else {
-                    console.log('Computer wins! You: paper, computer: rock')
-                    computerScore++
-                }
-            } else if (humanChoice == 'scissors') {
-                if(computerChoice == 'rock') {
-                    console.log('Computer wins! You: scissors, computer: rock')
-                    computerScore++
-                } else if(computerChoice == 'paper') {
-                    console.log('You win! You: scissors, computer: paper')
-                    humanScore++
-                } else {
-                    console.log('Draw! You: scissors, computer: scissors')
-                }
-            } else {
-                console.log("Your choice " + humanChoice + " is not rock, paper, or scissors!");
-            }
-        }
-
-        function playGame() {
-            playRound(getHumanChoice(), getComputerChoice())
-            playRound(getHumanChoice(), getComputerChoice())
-            playRound(getHumanChoice(), getComputerChoice())
-            playRound(getHumanChoice(), getComputerChoice())
-            playRound(getHumanChoice(), getComputerChoice())
-
-            console.log("==========================")
-            if(humanScore > computerScore) {
-                console.log(`You win! Your score: ${humanScore}, computer score: ${computerScore}`)
-            } else if(computerScore > humanScore) {
-                console.log(`You lose! Your score: ${humanScore}, computer score: ${computerScore}`)
-            } else {
-                console.log(`Draw! Your score: ${humanScore}, computer score: ${computerScore}`)
-            }
-            console.log("==========================")
-        }
-
-        playGame()
-
-    </script>
+    <button id="rock-button">Rock</button>
+    <button id="paper-button">Paper</button>
+    <button id="scissors-button">Scissors</button>
+    <div id="score-board">
+        <div id="human-score">Human score: 0</div>
+        <div id="computer-score">Computer score: 0</div>
+    </div>
 </body>
 </html>
